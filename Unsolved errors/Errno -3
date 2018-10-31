@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "server.py", line 134, in <module>
+    updates = bot.get_updates(offset=update_id)
+  File "/home/pi/CoffeeBot/bot.py", line 16, in get_updates
+    r = requests.get(url)
+  File "/home/pi/.local/lib/python2.7/site-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/pi/.local/lib/python2.7/site-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/pi/.local/lib/python2.7/site-packages/requests/sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/pi/.local/lib/python2.7/site-packages/requests/sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/pi/.local/lib/python2.7/site-packages/requests/adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot694049938:AAHrefnNLUWkbO_1EE64JyCySIZnxNvglPI/getUpdates?timeout=5&offset=884308100 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x753b3390>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
