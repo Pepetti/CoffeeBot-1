@@ -2,7 +2,7 @@
 A telegram bot that tells you how much coffee there is in a pot.
 
 ## Basic structure and wiring
-The hardware consists of a [kitchen scale](https://www.power.fi/keittio-ja-ruoanlaitto/keittion-pienkoneet/keittiovaaat/senz-se3830h05-keittiovaaka/p-231191/), [HX711 24-bit ADC](https://www.amazon.com/DIYmall-Weighing-Conversion-Sensors-Microcontroller/dp/B010FG9RXO) and a [raspberry pi](https://www.amazon.com/Raspberry-Pi-MS-004-00000024-Model-Board/dp/B01LPLPBS8/ref=sr_1_6?s=pc&ie=UTF8&qid=1541001456&sr=1-6&keywords=raspberry+pi+3).
+The hardware consists of a [kitchen scale](https://www.power.fi/keittio-ja-ruoanlaitto/keittion-pienkoneet/keittiovaaat/senz-se3830h05-keittiovaaka/p-231191/), [HX711 ADC](https://www.amazon.com/DIYmall-Weighing-Conversion-Sensors-Microcontroller/dp/B010FG9RXO) and a [raspberry pi](https://www.amazon.com/Raspberry-Pi-MS-004-00000024-Model-Board/dp/B01LPLPBS8/ref=sr_1_6?s=pc&ie=UTF8&qid=1541001456&sr=1-6&keywords=raspberry+pi+3).
 
 ### Wiring
 If you decide to use a kitchen scale for this bot, you might have to do a bit of soldering. Solder the wires coming from the scales weight sensors to a female jumper wire.
