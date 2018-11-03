@@ -1,0 +1,7 @@
+HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot694049938:AAHrefnNLUWkbO_1EE64JyCySIZnxNvglPI/getUpdates?timeout=100&offset=884308351 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7532e910>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+Traceback (most recent call last):
+  File "server.py", line 151, in <module>
+    updates = bot.get_updates(offset=update_id)
+  File "/home/pi/CoffeeBot/bot.py", line 24, in get_updates
+    return json.loads(r.content)
+UnboundLocalError: local variable 'r' referenced before assignment
