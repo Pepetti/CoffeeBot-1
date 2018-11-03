@@ -74,15 +74,16 @@ def parse_incoming_message(updates):
             message = message.split("@")
             message = message[0]
         from_ = item["message"]["from"]["id"]
+        reply = make_reply(message)
+        return reply, from_
     elif item["message"]["chat"]["type"] == "group" or item["message"]["chat"]["type"] == "supergroup":
         message = item["message"]["text"]
         if "@" in message:
             message = message.split("@")
             message = message[0]
         from_ = item["message"]["chat"]["id"]
-
-    reply = make_reply(message)
-    return reply, from_
+        reply = "Group commands have been disabled for now.."
+        return reply, from_
 
 #Get values necessary for the reply (weight on scale, pot configuration, timestamp, dl, cups)
 def get_values(config):
