@@ -18,7 +18,7 @@ bot = telegram_chatbot(config)
 parser = configparser.SafeConfigParser()
 
 #Scale setup
-scale = Scale()
+scale = Scale(5, 6, 1509)
 
 #Cleanup and exit on KeyboardInterrupt
 def cleanAndExit():

@@ -4,10 +4,10 @@ import sys
 
 class Scale():
 
-    def __init__(self):
-        self.hx = HX711(5, 6)
+    def __init__(self, pin1, pin2, reference_unit):
+        self.hx = HX711(pin1, pin2)
         self.hx.set_reading_format("LSB", "MSB")
-        self.hx.set_reference_unit(1509)
+        self.hx.set_reference_unit(reference_unit)
         self.hx.reset()
         self.hx.tare()
 
