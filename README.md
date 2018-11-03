@@ -24,7 +24,7 @@ On how to use the library in question, use the example.py file provided in the l
 
 ## Usage
 Create your own telegram bot with the instructions from [Telegram](https://core.telegram.org/bots).
-Clone or download the files from this repository to your raspi. Get the reference unit for your scale with instructions found in the [HX711 library](https://github.com/tatobari/hx711py/blob/master/example.py). After you have your reference unit, open up the server.py file and set it to hx.set_reference_unit(your_reference_unit) (on line 23). After this create a config.ini file to your directory containing the python files. Construct it as shown in the image below:
+Clone or download the files from this repository to your raspi. Get the reference unit for your scale with instructions found in the [HX711 library](https://github.com/tatobari/hx711py/blob/master/example.py). After you have your reference unit, open up the server.py file and initiliaze the scale object with your GPIO pin numbers and reference unit (Scale(5 ,6, 1509) in my case). After this create a config.ini file to your directory containing the python files. Construct it as shown in the image below:
 <br><img src="https://github.com/oskarikotajarvi/CoffeeBot/blob/master/photosForReadme/configSH.png" width="600" height="500">
 
 The "weight" in the config file is used to store calibrated weight of the coffee pot so the calibration doesn't have to be done everytime the raspi reboots.
