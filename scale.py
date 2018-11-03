@@ -10,32 +10,30 @@ class Scale():
         self.hx.set_reference_unit(reference_unit)
         self.hx.reset()
         self.hx.tare()
+        self.parser = configparser.SafeConfigParser()
 
     def calibrate(self, config, val):
-        parser = configparser.SafeConfigParser()
-        parser.read(config)
+        self.parser.read(config)
         val = str(val)
-        parser.set('creds', 'weight', val)
+        self.parser.set('creds', 'weight', val)
         with open('config.ini', 'w') as configfile:
-            parser.write(configfile)
+            self.parser.write(configfile)
 
     def reset(self):
         self.hx.reset()
         self.hx.tare()
 
     def hard_reset(self, config):
-        parser = configparser.SafeConfigParser()
-        parser.read(config)
-        parser.set('creds', 'weight', '0')
+        self.parser.read(config)
+        self.parser.set('creds', 'weight', '0')
         with open('config.ini', 'w') as configfile:
-            parser.write(configfile)
+            self.parser.write(configfile)
         self.hx.reset()
         self.hx.tare()
 
     def get_pot_weight(self, config):
-        parser = configparser.SafeConfigParser()
-        parser.read(config)
-        val = parser.getint('creds', 'weight')
+        self.parser.read(config)
+        val = self.parser.getint('creds', 'weight')
         return val
 
     def get_values(self, config):
