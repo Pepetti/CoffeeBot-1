@@ -121,6 +121,7 @@ while True:
                     reply, from_ = parse_incoming_message(updates)
                     bot.send_message(reply, from_)
                 except message == None:
-                    message = None
+                    print "Error: Couldn't retrieve the message"
+                    pass
     except(KeyboardInterrupt, SystemExit):
         cleanAndExit()
