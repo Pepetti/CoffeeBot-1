@@ -42,8 +42,7 @@ class Scale():
         self.parser.set('creds', 'weight', '0')
         with open('config.ini', 'w') as configfile:
             self.parser.write(configfile)
-        self.hx.reset()
-        self.hx.tare()
+        self.reset()
 
     '''
     Fetching the pot weight from the configfile.
@@ -64,6 +63,8 @@ class Scale():
     def get_values(self, config):
         pot_weight = self.get_pot_weight(config)
         val = max(0, int(self.hx.get_weight(5))) - pot_weight
+        if val < 0:
+            val = 0
         dl = val / 100.00
         cups = dl / 2
         return pot_weight, val, dl, cups

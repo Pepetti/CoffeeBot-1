@@ -5,27 +5,42 @@ import configparser
 import datetime
 import sys
 
-#GPIO cleanup and setting warnings to false in case the script is started after a crash
+'''
+GPIO cleanup at start in case the program crashed or was shutdown by cutting power
+Setting GPIO warnings to false, because we have no need for the warnings at this time
+'''
 GPIO.setwarnings(False)
 GPIO.cleanup()
 
-#Bot setup
+'''
+Bot setup
+'''
 update_id = None
 config = "config.ini"
 bot = telegram_chatbot(config)
 
-#Parser setup
+'''
+Parser setup
+'''
 parser = configparser.SafeConfigParser()
 
-#Scale setup
+'''
+Scale setup
+'''
 scale = Scale(5, 6, 1509)
 
-#Cleanup and exit on KeyboardInterrupt
+'''
+cleanAndExit. Cleans the GPIO and exists in case of a
+KeyboardInterrupt
+'''
 def cleanAndExit():
     GPIO.cleanup()
     sys.exit()
 
-#Get timestamp
+'''
+get_timestamp - returns the timestamp in format:
+DAY/MONTH/YEAR HOUR:MINUTE
+'''
 def get_timestamp():
     date = datetime.datetime.now()
     day = date.strftime("%d")
@@ -36,7 +51,10 @@ def get_timestamp():
     timestamp = "[{}/{}/{} {}:{}]".format(day, month, year, hour, minute)
     return timestamp
 
-#Parse incoming message for return ID and shave @ characters from the sendMessage, i want to die btw
+'''
+Parse the incoming message and figure out if the message was private or sent in a group.
+Also shave off @ - character if the message was in form of /coffee@bot
+'''
 def parse_incoming_message(updates):
     if item["message"]["chat"]["type"] == "private":
         message = item["message"]["text"]
@@ -55,10 +73,20 @@ def parse_incoming_message(updates):
         reply = "Group commands have been disabled for now.."
         return reply, from_
 
-#Commands available
+'''
+Available commands for the bot
+/start and /help -- Displays the help message
+/coffee -- To see the amount of coffee in the pot
+/calibrate -- Calibrates the scale
+/calibhelp -- Displays the help on calibration message
+/hreset -- Hard resets the scale. Wipes calibration
+/reset -- Resets the scale (reset and tare)
+'''
 commands = ["/start", "/help", "/coffee", "/calibrate", "/calibhelp", "/hreset", "/reset", "/aa"]
 
-#Making the reply message according to user message
+'''
+make_reply - returns the correct reply string according to user message
+'''
 def make_reply(msg):
     if msg is not None:
         pot_weight, val, dl, cups = scale.get_values(config)
@@ -107,7 +135,10 @@ After this send the /calibrate message to the bot. After this the scale is calib
 
     return reply
 
-#Infinite loop to run the bot while the pi is on
+'''
+Loop to run through everything while the pi is on.
+Different implimentation to come.
+'''
 while True:
     try:
         print "###"

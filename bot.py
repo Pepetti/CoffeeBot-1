@@ -17,7 +17,7 @@ class telegram_chatbot():
     new timeout will be started
     '''
     def get_updates(self, offset=None, r=None):
-        url = self.base + "getUpdates?timeout=100"
+        url = self.base + "getUpdates?timeout=200"
         if offset:
             url = url + "&offset={}".format(offset + 1)
         try:
